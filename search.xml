@@ -18,4 +18,82 @@
 <p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2024/06/21/ubuntu22.04%E5%AE%89%E8%A3%85yolov5/</url>
+    <content><![CDATA[<h1 id="ubuntu22-04安装yolov5"><a href="#ubuntu22-04安装yolov5" class="headerlink" title="ubuntu22.04安装yolov5"></a>ubuntu22.04安装yolov5</h1><h2 id="1、安装Anaconda"><a href="#1、安装Anaconda" class="headerlink" title="1、安装Anaconda"></a>1、安装Anaconda</h2><h3 id="下载Anaconda（推荐官网下载）"><a href="#下载Anaconda（推荐官网下载）" class="headerlink" title="下载Anaconda（推荐官网下载）"></a>下载Anaconda（推荐官网下载）</h3><ul>
+<li>官网首页：<a class="link"   href="https://www.anaconda.com/" >https://www.anaconda.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\anaconda.png"
+                      alt="anaconda"
+                ></p>
+<h3 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h3><p>1、在终端中打开</p>
+<p>2、输入下面命令行</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash Anaconda3-2021.11-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<p>3、输入yes，回车</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\1.png"
+                      alt="1"
+                ></p>
+<p>4、不断回车</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\2.png"
+                      alt="2"
+                ></p>
+<p>5、回车选择默认的安装目录（默认在用户主目录下创建一个名为anaconda3的文件夹作为安装地址）</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\3.png"
+                      alt="3"
+                ></p>
+<p>6、输入yes，并回车</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\4.png"
+                      alt="4"
+                ></p>
+<p>7、安装完成</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\5.png"
+                      alt="5"
+                ></p>
+<h2 id="2、创建conda虚拟环境"><a href="#2、创建conda虚拟环境" class="headerlink" title="2、创建conda虚拟环境"></a>2、创建conda虚拟环境</h2><p>在终端中输入下面命令(虚拟环境名称为yolov5、python环境为3.11)</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda create -n yolov5 python=3.11</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3、下载yolov5"><a href="#3、下载yolov5" class="headerlink" title="3、下载yolov5"></a>3、下载yolov5</h2><ul>
+<li><p>Yolov5 Github地址：<a class="link"   href="https://github.com/ultralytics/yolov5" >https://github.com/ultralytics/yolov5 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</li>
+<li><p>直接git clone到本地工作目录，等待下载完成：</p>
+</li>
+<li><pre><code class="git">git clone https://github.com/ultralytics/yolov5
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 4、Yolov5预训练模型</span><br><span class="line"></span><br><span class="line">- 下载地址：https://github.com/ultralytics/yolov5/releases</span><br><span class="line"></span><br><span class="line">![6](D:\Desktop\ubuntu\6.png)</span><br><span class="line"></span><br><span class="line">yolov5共有四种模型：yolov5s、yolov5m、yolov5l、yolov5x。</span><br><span class="line"></span><br><span class="line">不同的预训练模型 ，效果和精度不一样，如下图</span><br><span class="line"></span><br><span class="line">![7](D:\Desktop\ubuntu\7.png)</span><br><span class="line"></span><br><span class="line">## 安装Yolov5</span><br><span class="line"></span><br><span class="line">直接pip install -r requirements.txt，等待安装完成即可</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">python -m pip install -r requirements.txt</span><br></pre></td></tr></table></figure></div>
+</code></pre>
+</li>
+</ul>
+<p>如果没有cuda默认安装的pytorch-cpu版，如果有gpu可以安装gpu版：<a class="link"   href="https://pytorch.org/get-started/locally/%EF%BC%8C" >https://pytorch.org/get-started/locally/， <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 提升速度。</p>
+<h2 id="测试Yolov5"><a href="#测试Yolov5" class="headerlink" title="测试Yolov5"></a>测试Yolov5</h2><p>通过detect.py对图像进行目标检测</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">python detect.py --source ./data/images/bus.jpg</span><br></pre></td></tr></table></figure></div>
+
+<p>可以在yolov5&#x2F;runs&#x2F;detect目录下找到模型输出结果的文件夹</p>
+<p>这是源码自带的bus.jpg识别效果</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="D:\Desktop\ubuntu\8.png"
+                      alt="8"
+                ></p>
+]]></content>
+  </entry>
 </search>
