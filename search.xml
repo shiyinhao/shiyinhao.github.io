@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu22.04平台跑通AMD显卡(6700x)</title>
+    <url>/2024/06/22/Ubuntu22.04%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9AAMD%E6%98%BE%E5%8D%A1(6700x)/</url>
+    <content><![CDATA[<h2 id="1、安装Anaconda"><a href="#1、安装Anaconda" class="headerlink" title="1、安装Anaconda"></a>1、安装Anaconda</h2><p>推荐官网下载（<a class="link"   href="https://www.anaconda.com/download/success%EF%BC%89" >https://www.anaconda.com/download/success） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">sh Anaconda3-<span class="number">2024</span>.<span class="number">02</span>-<span class="number">1</span>-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2、安装git"><a href="#2、安装git" class="headerlink" title="2、安装git"></a>2、安装git</h2><p>参考教程</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/beishanyingluo/article/details/107451921</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="3、安装pycharm"><a href="#3、安装pycharm" class="headerlink" title="3、安装pycharm"></a>3、安装pycharm</h2><p>推荐应用商店</p>
+<h2 id="4、安装yolov5"><a href="#4、安装yolov5" class="headerlink" title="4、安装yolov5"></a>4、安装yolov5</h2><p>参考教程</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.cnblogs.com/HGNET/p/17958422</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="5、安装amd-rocm驱动"><a href="#5、安装amd-rocm驱动" class="headerlink" title="5、安装amd rocm驱动"></a>5、安装amd rocm驱动</h2><p>根据官网指导安装</p>
+<p>（<a class="link"   href="https://rocm.docs.amd.com/projects/install-on-linux/en/latest/tutorial/quick-start.html#rocm-installation-known-issues-and-workarounds%EF%BC%89" >https://rocm.docs.amd.com/projects/install-on-linux/en/latest/tutorial/quick-start.html#rocm-installation-known-issues-and-workarounds） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://yinhao1.oss-cn-beijing.aliyuncs.com/202406221302793.png"
+                      alt="image-20240622130223723"
+                ></p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">sudo apt update	</span><br><span class="line">sudo apt install &quot;linux-headers-$(uname -r)&quot; &quot;linux-modules-extra-$(uname -r)&quot;	</span><br><span class="line">sudo usermod -a -G render,video $LOGNAME # Add the current user to the render and video groupswget https://repo.radeon.com/amdgpu-install/<span class="number">6</span>.<span class="number">1</span>.<span class="number">2</span>/ubuntu/jammy/amdgpu-install_6.<span class="number">1</span>.<span class="number">60102</span>-<span class="number">1</span>_all.deb</span><br><span class="line">sudo apt install ./amdgpu-install_6.<span class="number">1</span>.<span class="number">60102</span>-<span class="number">1</span>_all.deb	</span><br><span class="line">sudo apt update	</span><br><span class="line">sudo apt install amdgpu-dkms rocm</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="6、安装torch"><a href="#6、安装torch" class="headerlink" title="6、安装torch"></a>6、安装torch</h2><p>（<a class="link"   href="https://pytorch.org/get-started/locally/%EF%BC%89" >https://pytorch.org/get-started/locally/） <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://yinhao1.oss-cn-beijing.aliyuncs.com/202406221304520.png"
+                      alt="image-20240622130433484"
+                ></p>
+<h6 id="我选择的是torch2-3-1-rocm6-0-python3-11"><a href="#我选择的是torch2-3-1-rocm6-0-python3-11" class="headerlink" title="我选择的是torch2.3.1+rocm6.0+python3.11"></a>我选择的是torch2.3.1+rocm6.0+python3.11</h6><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="7、安装本地whl"><a href="#7、安装本地whl" class="headerlink" title="7、安装本地whl"></a>7、安装本地whl</h2><p><a class="link"   href="https://download.pytorch.org/whl/torch/" >https://download.pytorch.org/whl/torch/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>根据第六步选择的版本安装</p>
+<p>例如我选择的为 torch2.3.1+rocm6.0+python3.11</p>
+<p>那我的要下载的文件就为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://yinhao1.oss-cn-beijing.aliyuncs.com/202406221309295.png"
+                      alt="image-20240622130943262"
+                ></p>
+<p>下载之后，安装命令则为</p>
+<div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">pip3 install torch-<span class="number">2</span>.<span class="number">3</span>.<span class="number">1</span>+rocm6.<span class="number">0</span>-cp311-cp311-linux_x86_64.whl</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="8、测试torch"><a href="#8、测试torch" class="headerlink" title="8、测试torch"></a>8、测试torch</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://yinhao1.oss-cn-beijing.aliyuncs.com/202406221310077.png"
+                      alt="image-20240622131026039"
+                ></p>
+<h2 id="9、配置系统变量"><a href="#9、配置系统变量" class="headerlink" title="9、配置系统变量"></a>9、配置系统变量</h2><div class="highlight-container" data-rel="Cmd"><figure class="iseeu highlight cmd"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></div>
+
+<p>加入下面两行</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">export HSA_OVERRIDE_GFX_VERSION=10.3.0</span><br><span class="line">export HIP_VISIBLE_DEVICES=0</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="10、参考文档"><a href="#10、参考文档" class="headerlink" title="10、参考文档"></a>10、参考文档</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/qq_39103891/article/details/137083286</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/qq_51403540/article/details/123951460?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-123951460-blog-137083286.235^v43^pc_blog_bottom_relevance_base9&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://rocm.docs.amd.com/projects/HIP/en/latest/index.html</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2024/06/21/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
